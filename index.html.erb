@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag 'posts', :media => "all" %>
+
+
+<div class="posts">
+ <h3>投稿一覧</h3>
+ <% @posts.each do |t| %>
+    <div class="post">
+     <div class="main-box">
+        <div class="left-container">
+        <p><%= t.name %></p>
+        
+        <%= t.body %></div>
+        <div class="right-container">
+          <a href="/users/<%= t.user.id %>"><%= t.user.name %>
+     
+          <%= image_tag t.image_url, size: "250x200" if t.image? %>
+
+           
+          
+           <%= link_to "削除する", post_path(t.id), method: :delete %>
+        </div>   
+      </div>     
+    </div>
+  <% end %>
+</div>
